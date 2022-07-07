@@ -17,7 +17,7 @@ class InvenCrawler:
     url: str = "https://www.inven.co.kr/board"
     url_comment: str = "https://www.inven.co.kr/common/board/comment.json.php"
     HEADERS: dict = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:100.0) Gecko/20100101 Firefox/100.0"
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36"
     }
     board_type: str
     board_id: int
