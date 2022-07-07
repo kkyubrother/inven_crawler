@@ -120,7 +120,9 @@ class InvenCrawler:
             self,
             auto_save: bool = True, sampling: bool = False,
             max_idx: Union[int, bool, None] = None,
-            min_idx: Union[int, bool, None] = None):
+            min_idx: Union[int, bool, None] = None,
+            slow: bool = False,
+    ):
         """크롤링 한다
 
         :param auto_save: 자동 저장을 하는가?
@@ -173,6 +175,8 @@ class InvenCrawler:
             except Exception as e:
                 print(e)
             time.sleep(random.random())
+            if slow:
+                time.sleep(random.random())
 
             if auto_save and not i % 50:
                 self.save_data()
