@@ -122,13 +122,16 @@ class InvenCrawler:
             max_idx: Union[int, bool, None] = None,
             min_idx: Union[int, bool, None] = None,
             slow: bool = False,
+            step: int = 1,
     ):
         """크롤링 한다
 
+        :param slow: 작동 주기를 늘림
         :param auto_save: 자동 저장을 하는가?
         :param sampling: 100개만 크롤링 하는가?
         :param max_idx: 시작 인덱스는 어디인가? True: 이어하기, int: 지정된 숫자에서 시작, None: 웹사이트에서 가져옴
         :param min_idx: 끝 인덱스는 어디인가?None: 웹에서 가져옴, > 0: 지정된 숫자에서 끝, < 0: max_idx에서 해당 수치를 뺌
+        :param step: 인덱스 스텝
         :return:
         """
         # max_idx == True
@@ -168,7 +171,7 @@ class InvenCrawler:
         max_idx, min_idx = int(max_idx), int(min_idx)
         print("max_idx:", max_idx, "min_idx:", min_idx)
 
-        for i in tqdm(range(max_idx, min_idx, -1)):
+        for i in tqdm(range(max_idx, min_idx, step * -1)):
             
             try:
                 self.data.append(self.crawling_article(i))
