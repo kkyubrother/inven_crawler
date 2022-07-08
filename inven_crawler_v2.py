@@ -172,7 +172,6 @@ class InvenCrawler:
         print("max_idx:", max_idx, "min_idx:", min_idx)
 
         for i in tqdm(range(max_idx, min_idx, step * -1)):
-            
             try:
                 self.data.append(self.crawling_article(i))
             except Exception as e:
@@ -181,7 +180,7 @@ class InvenCrawler:
             if slow:
                 time.sleep(random.random())
 
-            if auto_save and not i % 50:
+            if auto_save and not len(self.data) % 50:
                 self.save_data()
 
             if sampling and len(self.data) > 100:
